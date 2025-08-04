@@ -1,0 +1,156 @@
+/* Universal Reset */
+
+* {
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+
+/* Background video or image */
+
+body {
+    background: #0d0f1a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    animation: fadeIn 1s ease-in-out;
+    overflow: hidden;
+}
+
+
+/* Calculator Container */
+
+.calculator {
+    background: rgba(15, 20, 40, 0.9);
+    padding: 25px;
+    border-radius: 20px;
+    box-shadow: 0 0 25px rgba(0, 255, 255, 0.2);
+    width: 320px;
+    max-width: 90vw;
+    transform: scale(0.9);
+    animation: popUp 0.8s ease-out forwards;
+}
+
+
+/* Input Field */
+
+input {
+    width: 100%;
+    padding: 20px;
+    font-size: 2rem;
+    border: none;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    text-align: right;
+    background: #121628;
+    color: #00f7ff;
+    box-shadow: inset 0 0 10px rgba(0, 255, 255, 0.05);
+    animation: slideInTop 0.5s ease-out;
+}
+
+
+/* Button Grid */
+
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+}
+
+
+/* Buttons */
+
+button {
+    position: relative;
+    overflow: hidden;
+    padding: 20px;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 12px;
+    background: linear-gradient(145deg, #1e2746, #151c33);
+    color: #e0e0ff;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(0, 217, 255, 0.1);
+    transition: all 0.2s ease;
+}
+
+button:hover {
+    background: #27336c;
+    transform: scale(1.05);
+    box-shadow: 0 0 12px #00f7ff;
+}
+
+button:active {
+    transform: scale(0.95);
+}
+
+
+/* Ripple Effect */
+
+button::after {
+    content: "";
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    top: 50%;
+    left: 50%;
+    pointer-events: none;
+    transform: translate(-50%, -50%) scale(0);
+    background: rgba(0, 255, 255, 0.2);
+    border-radius: 50%;
+    transition: transform 0.5s ease-out;
+}
+
+button:active::after {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+
+/* Special Button Styles */
+
+.operator {
+    background-color: #8b5cf6;
+    color: white;
+}
+
+.equal {
+    background-color: #10b981;
+    color: white;
+}
+
+.wide {
+    grid-column: span 2;
+}
+
+
+/* Animations */
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes popUp {
+    to {
+        transform: scale(1);
+    }
+}
+
+@keyframes slideInTop {
+    from {
+        transform: translateY(-40px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
